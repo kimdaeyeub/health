@@ -13,9 +13,10 @@ class HomeChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
-      height: 300,
+      height: 250,
+      padding: const EdgeInsets.all(10),
       child: LineChart(
         LineChartData(
           minX: 0,

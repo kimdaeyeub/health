@@ -23,45 +23,109 @@ class _HomeScreenState extends State<HomeScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20,
+        padding: const EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 10,
+          bottom: 70,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HomeChart(
-              gradientColors: gradientColors,
-              secondGradient: secondGradient,
-            ),
-            const Text(
-              "현재 진황 상황",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeChart(
+                gradientColors: gradientColors,
+                secondGradient: secondGradient,
               ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                HomeScreenDataBox(
-                  size: size,
-                  bgColor: const Color(0xffB33771),
-                  data: 340,
-                  text: "오늘 섭취량",
+              const Text(
+                "현재 진황 상황",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
-                HomeScreenDataBox(
-                  size: size,
-                  bgColor: const Color(0xff1B9CFC),
-                  data: 230,
-                  text: "오늘 소모량",
-                )
-              ],
-            )
-          ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  HomeScreenDataBox(
+                    size: size,
+                    bgColor: const Color(0xffB33771),
+                    data: 340,
+                    text: "오늘 섭취량",
+                  ),
+                  HomeScreenDataBox(
+                    size: size,
+                    bgColor: const Color(0xff1B9CFC),
+                    data: 230,
+                    text: "오늘 소모량",
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "오늘의 식단",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              FractionallySizedBox(
+                widthFactor: 1,
+                child: Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey.shade400,
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "오늘의 식단",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              FractionallySizedBox(
+                widthFactor: 1,
+                child: Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey.shade400,
+                    ),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
