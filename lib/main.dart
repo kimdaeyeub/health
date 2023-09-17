@@ -1,7 +1,6 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:health/features/main_navigation.dart';
-import 'package:health/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:health/features/home/views/home_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -9,12 +10,77 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
+  int _selectedIndex = 0;
+
+  void _onMoveTap(int value) {
+    _selectedIndex = value;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
+            Positioned.fill(
+              child: Stack(
+                children: [
+                  Offstage(
+                    offstage: _selectedIndex != 0,
+                    child: const HomeScreen(),
+                  ),
+                  Offstage(
+                    offstage: _selectedIndex != 1,
+                    child: const Center(
+                      child: Text(
+                        "운동추천",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Offstage(
+                    offstage: _selectedIndex != 2,
+                    child: const Center(
+                      child: Text(
+                        "음식추천",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Offstage(
+                    offstage: _selectedIndex != 3,
+                    child: const Center(
+                      child: Text(
+                        "Home",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Offstage(
+                    offstage: _selectedIndex != 4,
+                    child: const Center(
+                      child: Text(
+                        "세팅",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -28,67 +94,82 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
                     20,
                   ),
                 ),
-                child: const Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: FaIcon(
-                        FontAwesomeIcons.house,
-                        size: 25,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () => _onMoveTap(0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: FaIcon(
+                          FontAwesomeIcons.house,
+                          size: 25,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 24,
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: FaIcon(
-                        FontAwesomeIcons.magnifyingGlass,
-                        color: Colors.white,
-                        size: 25,
+                    GestureDetector(
+                      onTap: () => _onMoveTap(1),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: FaIcon(
+                          FontAwesomeIcons.magnifyingGlass,
+                          color: Colors.white,
+                          size: 25,
+                        ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 24,
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(
-                        10,
-                      ),
-                      child: FaIcon(
-                        FontAwesomeIcons.plus,
-                        color: Colors.white,
-                        size: 25,
+                    GestureDetector(
+                      onTap: () => _onMoveTap(2),
+                      child: const Padding(
+                        padding: EdgeInsets.all(
+                          10,
+                        ),
+                        child: FaIcon(
+                          FontAwesomeIcons.plus,
+                          color: Colors.white,
+                          size: 25,
+                        ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 24,
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: FaIcon(
-                        FontAwesomeIcons.user,
-                        color: Colors.white,
-                        size: 25,
+                    GestureDetector(
+                      onTap: () => _onMoveTap(3),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: FaIcon(
+                          FontAwesomeIcons.user,
+                          color: Colors.white,
+                          size: 25,
+                        ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 24,
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(10),
-                      child: FaIcon(
-                        FontAwesomeIcons.gear,
-                        size: 25,
-                        color: Colors.white,
+                    GestureDetector(
+                      onTap: () => _onMoveTap(4),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: FaIcon(
+                          FontAwesomeIcons.gear,
+                          size: 25,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
