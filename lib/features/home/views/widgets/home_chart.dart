@@ -14,8 +14,11 @@ class HomeChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: const BoxDecoration(
+        color: Colors.teal,
+      ),
       width: double.infinity,
-      height: 250,
+      height: 180,
       padding: const EdgeInsets.all(10),
       child: LineChart(
         LineChartData(
@@ -27,13 +30,13 @@ class HomeChart extends StatelessWidget {
           titlesData: const FlTitlesData(
             show: false,
           ),
-          gridData: FlGridData(
+          gridData: const FlGridData(
             drawVerticalLine: false,
-            // drawHorizontalLine: false,
-            getDrawingHorizontalLine: (value) => FlLine(
-              color: Colors.grey.shade200,
-              strokeWidth: 2,
-            ),
+            drawHorizontalLine: false,
+            // getDrawingHorizontalLine: (value) => FlLine(
+            //   color: Colors.grey.shade200.withOpacity(0.3),
+            //   strokeWidth: 2,
+            // ),
           ),
           // backgroundColor: Theme.of(context).primaryColor,
           lineBarsData: [
@@ -47,10 +50,14 @@ class HomeChart extends StatelessWidget {
                 const FlSpot(6, 2.5),
                 const FlSpot(7, 1.7),
               ],
-              isCurved: true,
+              // isCurved: true,
               barWidth: 7,
               gradient: LinearGradient(
-                colors: gradientColors,
+                colors: gradientColors
+                    .map(
+                      (e) => e.withOpacity(0.3),
+                    )
+                    .toList(),
               ),
               dotData: const FlDotData(
                 show: false,
@@ -67,7 +74,7 @@ class HomeChart extends StatelessWidget {
             ),
             LineChartBarData(
               spots: [
-                const FlSpot(0, 1.4),
+                const FlSpot(0, 0),
                 const FlSpot(2, 3.0),
                 const FlSpot(3, 1.6),
                 const FlSpot(4, 1.2),
@@ -75,10 +82,10 @@ class HomeChart extends StatelessWidget {
                 const FlSpot(6, 2.3),
                 const FlSpot(7, 1.3),
               ],
-              isCurved: true,
+              // isCurved: true,
               barWidth: 7,
               gradient: LinearGradient(
-                colors: secondGradient,
+                colors: secondGradient.map((e) => e.withOpacity(0.3)).toList(),
               ),
               dotData: const FlDotData(
                 show: false,
